@@ -12,7 +12,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        $projects = auth()->user()->projects;
+        return view('projects.index', compact('projects'));
     }
 
     /**
@@ -20,7 +21,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('projects.create');
     }
 
     /**
@@ -28,7 +29,16 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $data = $request->validate([
+           'name' => 'required',
+           'description' => 'required'
+       ]);
+
+       $data['user_id'] = auth()->id();
+
+       project::create($data);
+
+       return redirect('/projects');
     }
 
     /**

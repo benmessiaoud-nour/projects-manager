@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Laravel') }} - @yield('title' , '')</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -15,6 +15,19 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <style>
+        .btn-delete{
+            background: url("/images/delete.png");
+            background-repeat: no-repeat
+            background-size: 1.1rem 1.1rem;
+            padding-bottom: 0;
+            padding-top: 0 ;
+            padding-left: 0;
+            border:0px;
+            outline:none;
+        }
+        </style>
 </head>
 <body>
     <div id="app">
@@ -73,7 +86,9 @@
         </nav>
 
         <main class="py-4">
+            <div class="container">
             @yield('content')
+        </div>
         </main>
     </div>
 </body>
