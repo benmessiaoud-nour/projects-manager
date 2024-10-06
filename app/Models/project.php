@@ -10,9 +10,12 @@ class project extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'description',  'user_id'
+        'name', 'description',  'user_id' , 'status'
     ];
     public function user(){
         return $this->belongsTo(user::class);
+    }
+    public function tasks(){
+        return $this->hasMany(Task::class);
     }
 }

@@ -8,7 +8,7 @@
     </div>
 
     <div>
-        <a href="/projects/create" class="btn btn-primary py-4" role="button">New Project</a>
+        <a href="/projects/create" class="btn btn-primary py-2" role="button">New Project</a>
     </div>
 </header>
     
@@ -16,7 +16,7 @@
 <div class="row">
     
     @forelse ($projects as $project)
-    <div class="card col-4 mb-4">
+    <div class="card col-4 mb-4 me-4">
         <div class="card-body">
             <div class="status">
                 @switch($project->status)
@@ -30,9 +30,10 @@
                         <span class="text-warning">In Progress</span>
                 @endswitch
             </div>
-            <h5 class="font-wieght-bold card-title">
-                <a href="/projects/{{ $project->id }}">{{ $project->title }}</a>
-            </h5>
+         
+           <h5 class="font-weight-bold card-title">
+                <a href="/projects/{{ $project->id }}"> {{ $project->name }} </a>
+           </h5>
 
             <div class="card-text mt-4">
                 {{ Str::limit( $project->description , 150)}}
@@ -54,10 +55,6 @@
 </div>
 
 </section>
-
-
-
-
 
 
 @endsection

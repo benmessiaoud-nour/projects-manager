@@ -46,7 +46,7 @@ class ProjectController extends Controller
      */
     public function show(project $project)
     {
-        //
+      return view('projects.show' , compact('project'));
     }
 
     /**
@@ -62,8 +62,10 @@ class ProjectController extends Controller
      */
     public function update(Request $request, project $project)
     {
-        //
+        $project->update(['status'=>request('status')]);
+        return redirect('/projects/'.$project->id);
     }
+    
 
     /**
      * Remove the specified resource from storage.
