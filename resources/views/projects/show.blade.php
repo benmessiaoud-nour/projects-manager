@@ -61,10 +61,20 @@
     <div class="col-lg-8">
     @foreach ($project->tasks as $task)
         <div class="card">
-            <div>
+            <div class="{{$task->done ? 'checked muted' : ''}}"> 
                 {{$task->body}}
+            </div> 
+
+            <div>
+                <form action="/projects/{{$project->id}}/tasks/{{$task->id}}" method="POST">
+                    @csrf
+                    @method('PATCH')
+                    <input type="checkbox" name="done"  class="form-control me-4" {{$task->done ? 'checked' : ''}} onchange="this.form.submit()">
+                </form>
+          
             </div>
         </div>
+
     @endforeach
     <div class="card">
         <form action="/projects/{{$project->id}}/tasks" method="POST">

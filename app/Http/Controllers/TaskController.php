@@ -21,4 +21,11 @@ class TaskController extends Controller
         Task::Create($data);
         return back();
     }
+
+    public function update(Project $project , Task $task){
+        $task->update([
+            'done'=>request()->has('done')
+        ]);
+        return back();
+    }
 }
