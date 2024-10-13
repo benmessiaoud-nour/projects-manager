@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,4 +28,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::post('/projects/{project}/tasks', [TaskController::class, 'store']);
 
-Route::PATCH('/projects/{project}/tasks/{task}' , [TaskController::class, 'update']);
+Route::patch('/projects/{project}/tasks/{task}' , [TaskController::class, 'update']);
+
+Route::delete('/projects/{project}/tasks/{task}' , [TaskController::class, 'destroy']);
+
+Route::get('/profile' , [ProfileController::class , 'index'])->middleware('auth');
+
+Route::patch('/profile' , [ProfileController::class , 'update']);

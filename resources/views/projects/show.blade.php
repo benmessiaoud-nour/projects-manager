@@ -58,14 +58,14 @@
      
     
     
-    <div class="col-lg-8">
+    <div class="col-lg-8 ">
     @foreach ($project->tasks as $task)
-        <div class="card">
+        <div class="card d-flex flex-row">
             <div class="{{$task->done ? 'checked muted' : ''}}"> 
                 {{$task->body}}
             </div> 
 
-            <div>
+            <div class="ms-auto">
                 <form action="/projects/{{$project->id}}/tasks/{{$task->id}}" method="POST">
                     @csrf
                     @method('PATCH')
@@ -77,12 +77,13 @@
 
     @endforeach
     <div class="card">
-        <form action="/projects/{{$project->id}}/tasks" method="POST">
+        <form action="/projects/{{$project->id}}/tasks" method="POST" class="d-flex">
             @csrf
         <input type="text" name="body" class="form-control p-2 me-2" placeholder="Add a new task">
         <button type="submit" class="btn btn-primary">Add</button>
         </form>
     </div>
+   
     </div>
 </div>
 </section>
